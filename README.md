@@ -170,7 +170,25 @@ python python/02_generate_sales.py
 
 # Dashboard
 
-Dashboard screenshots will be added after the Power BI report is completed.
+The Power BI report has 6 pages, built on top of the star schema described above.
+
+### Executive Dashboard
+![Executive Dashboard](powerbi/screenshots/01_executive_dashboard.png)
+
+### Platform Performance
+![Platform Performance](powerbi/screenshots/02_platform_performance.png)
+
+### Publishers
+![Publishers](powerbi/screenshots/03_publishers.png)
+
+### Genres
+![Genres](powerbi/screenshots/04_genres.png)
+
+### Countries
+![Countries](powerbi/screenshots/05_countries.png)
+
+### Games
+![Games](powerbi/screenshots/06_games.png)
 
 ---
 
