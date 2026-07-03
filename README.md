@@ -1,4 +1,4 @@
-#🎮 Game Market Intelligence | PostgreSQL + Python + Power BI
+# 🎮 Game Market Intelligence | PostgreSQL + Python + Power BI
 
 An end-to-end Data Analytics project that simulates digital game sales across multiple gaming platforms.
 
@@ -113,9 +113,9 @@ game-market-intelligence/
 │   └── 03_business_queries.sql
 │
 ├── powerbi/
-│   └── game-market-intelligence.pbix
-│
-├── docs/
+│   ├── game-market-intelligence.pbip
+│   ├── game-market-intelligence.Report/
+│   └── game-market-intelligence.SemanticModel/
 │
 ├── requirements.txt
 ├── .env.example
@@ -135,6 +135,36 @@ game-market-intelligence/
 - PostgreSQL
 - Business Intelligence
 - Power BI Dashboard Development
+
+---
+
+# Setup
+
+1. Clone the repository and create a virtual environment:
+
+```bash
+python -m venv venv
+venv\Scripts\activate        # Windows
+pip install -r requirements.txt
+```
+
+2. Copy `.env.example` to `.env` and fill in your PostgreSQL credentials and Steam API settings.
+
+3. Create the database schema and seed the dimension tables:
+
+```bash
+psql -U <user> -d <database> -f sql/01_schema.sql
+psql -U <user> -d <database> -f sql/02_seed_dimensions.sql
+```
+
+4. Run the Python pipeline to fetch game metadata and generate sales data:
+
+```bash
+python python/01_fetch_steam_games.py
+python python/02_generate_sales.py
+```
+
+5. Explore the business queries in `sql/03_business_queries.sql`, or open `powerbi/game-market-intelligence.pbip` in Power BI Desktop to view the report.
 
 ---
 
