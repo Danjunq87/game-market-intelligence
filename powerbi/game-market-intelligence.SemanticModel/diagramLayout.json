@@ -1,0 +1,152 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 606.4000244140625,
+        "y": 276.79998779296875
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 50,
+            "y": 205.01329025192365
+          },
+          "nodeIndex": "public countries",
+          "nodeLineageTag": "928159f9-6877-46aa-b732-871613d54a84",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 790.62148982337783,
+            "y": 768.62161350655731
+          },
+          "nodeIndex": "public developers",
+          "nodeLineageTag": "63a4b3f8-e025-4ab4-bb10-fb5ef180d9a9",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 927.37867350751048,
+            "y": 425.16821971862555
+          },
+          "nodeIndex": "public game_genres",
+          "nodeLineageTag": "9da4a11e-3581-402c-ae34-4b8a99691ce0",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 629.51710316644255,
+            "y": 412.87306631758054
+          },
+          "nodeIndex": "public games",
+          "nodeLineageTag": "259c12d6-4bcc-49b5-90ba-5e86c209cde4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1077.382757732189,
+            "y": 606.49814752553641
+          },
+          "nodeIndex": "public genres",
+          "nodeLineageTag": "a90cdf04-6bf9-4c42-8c95-db9f7a364043",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 229.88536668630178,
+            "y": -50
+          },
+          "nodeIndex": "public platforms",
+          "nodeLineageTag": "8e929ed7-feaf-40ef-90a9-3b380de87d06",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 409.67848767894219,
+            "y": 768.84946593774976
+          },
+          "nodeIndex": "public publishers",
+          "nodeLineageTag": "d0a2801c-e636-49d3-b84b-be2bfcee3b67",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 339.55741047381758,
+            "y": 207.76816566757532
+          },
+          "nodeIndex": "public sales",
+          "nodeLineageTag": "0d40e6c5-c84a-4224-ac33-ee8f93fda773",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1311.382757732189,
+            "y": 421.42473296887488
+          },
+          "nodeIndex": "public vw_genre_revenue",
+          "nodeLineageTag": "288c2d44-9554-4bc5-ba0c-868b137db2a0",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 795.18274552515777,
+            "y": 189.42473296887488
+          },
+          "nodeIndex": "DimDate",
+          "nodeLineageTag": "de999986-9a40-4f1f-8116-57ffb53eaa14",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

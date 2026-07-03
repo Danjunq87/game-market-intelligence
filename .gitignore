@@ -1,0 +1,28 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDEs
+.vscode/
+.cursor/
+
+# Power BI — versioned as .pbip project (text/JSON, diff-friendly);
+# the compiled .pbix is a local convenience copy, not source of truth.
+# The .pbi/ folders hold machine-local cache/settings (VertiPaq cache,
+# encrypted security bindings) — never meant for source control.
+*.pbix
+*.pbix.autorecover
+**/.pbi/
+
+# OS files
+.DS_Store
+Thumbs.db

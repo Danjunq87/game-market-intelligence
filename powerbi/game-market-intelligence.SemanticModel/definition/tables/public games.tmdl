@@ -1,0 +1,123 @@
+table 'public games'
+	lineageTag: 259c12d6-4bcc-49b5-90ba-5e86c209cde4
+
+	column game_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d5406f8-f8fc-474c-b865-4f45ea75a853
+		summarizeBy: none
+		sourceColumn: game_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column steam_appid
+		dataType: int64
+		formatString: 0
+		lineageTag: ce480fea-8734-461a-a47d-714c7e20b32b
+		summarizeBy: sum
+		sourceColumn: steam_appid
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: f2160be5-596f-4807-867e-49f339a880b8
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column publisher_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 50096f25-22b8-433e-8bbf-a4321aac2f4d
+		summarizeBy: none
+		sourceColumn: publisher_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column developer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b39f88fc-a7f5-4232-bc4a-bc49006a8b8d
+		summarizeBy: none
+		sourceColumn: developer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 68841577-35da-4e4e-bd35-a74d83407a88
+		summarizeBy: none
+		sourceColumn: release_date
+
+		variation Variation
+			isDefault
+			relationship: 3d3eb0f4-1737-4687-b494-daded3854f9b
+			defaultHierarchy: LocalDateTable_9e0f0bf8-e480-4a42-b968-23cfab738516.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column base_price_usd
+		dataType: double
+		lineageTag: de255eb5-ac6a-4c65-a2a7-49815466ea7f
+		summarizeBy: sum
+		sourceColumn: base_price_usd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column positive_review_pct
+		dataType: double
+		lineageTag: 32ffc93d-92a9-4fe9-ae4c-41c40e42e98c
+		summarizeBy: sum
+		sourceColumn: positive_review_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_indie
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d75b6979-2c5e-4736-be41-11c5fc1acd94
+		summarizeBy: none
+		sourceColumn: is_indie
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 11387c80-fe8d-4845-981e-a6dbae137742
+		summarizeBy: none
+		sourceColumn: created_at
+
+		variation Variation
+			isDefault
+			relationship: d8eb99be-c1a4-4ca8-b13a-a29cc4307b77
+			defaultHierarchy: LocalDateTable_d0e1e6ca-7c22-454c-a3ed-06ff41512b8f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category = IF('public games'[is_indie], "Indie", "Non-Indie")
+		lineageTag: befc664e-f589-461f-ac35-20624915f3bc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'public games' = m
+		mode: import
+		source =
+				let
+				    Fonte = PostgreSQL.Database("localhost", "game_market_intelligence"),
+				    public_games = Fonte{[Schema="public",Item="games"]}[Data]
+				in
+				    public_games
+
+	annotation PBI_ResultType = Table
+

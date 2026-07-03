@@ -1,0 +1,32 @@
+table 'public game_genres'
+	lineageTag: 9da4a11e-3581-402c-ae34-4b8a99691ce0
+
+	column game_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6574fe98-cb18-4bcd-917a-acff4867f110
+		summarizeBy: none
+		sourceColumn: game_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column genre_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8cc03ed7-701c-4734-98f1-205d0073a660
+		summarizeBy: none
+		sourceColumn: genre_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'public game_genres' = m
+		mode: import
+		source =
+				let
+				    Fonte = PostgreSQL.Database("localhost", "game_market_intelligence"),
+				    public_game_genres = Fonte{[Schema="public",Item="game_genres"]}[Data]
+				in
+				    public_game_genres
+
+	annotation PBI_ResultType = Table
+

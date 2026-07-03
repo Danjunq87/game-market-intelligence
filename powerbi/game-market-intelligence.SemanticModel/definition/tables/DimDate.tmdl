@@ -1,0 +1,47 @@
+table DimDate
+	lineageTag: de999986-9a40-4f1f-8116-57ffb53eaa14
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: 73d60146-39fe-4513-94d8-545ce7f87f64
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR(DimDate[Date])
+		formatString: 0
+		lineageTag: f8282051-7f2a-46fc-a954-e2d151afbb90
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber = MONTH(DimDate[Date])
+		formatString: 0
+		lineageTag: 5eb35b5c-546c-40a6-9665-1c64c212784a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName = FORMAT(DimDate[Date], "mmmm")
+		lineageTag: fe96c2f4-16ec-43aa-8caf-067a376ef8e7
+		summarizeBy: none
+		sortByColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter = "T" & QUARTER(DimDate[Date])
+		lineageTag: 17e0b148-68c1-4b2f-ab3c-614d1cc4ee1e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = calculated
+		mode: import
+		source = CALENDAR(DATE(2023,1,1), DATE(2025,12,31))
+
+	annotation PBI_Id = fb087e1be79a44e5b6a994781aa01ef5
+

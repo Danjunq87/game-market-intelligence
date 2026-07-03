@@ -1,0 +1,41 @@
+table 'public vw_genre_revenue'
+	lineageTag: 288c2d44-9554-4bc5-ba0c-868b137db2a0
+
+	column genre
+		dataType: string
+		lineageTag: 7791f79c-3575-44fe-88d6-c11d17b75ec0
+		summarizeBy: none
+		sourceColumn: genre
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_usd
+		dataType: double
+		lineageTag: 241babf5-0bee-4fef-a15a-6d3016343760
+		summarizeBy: sum
+		sourceColumn: revenue_usd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column units_sold
+		dataType: int64
+		formatString: 0
+		lineageTag: b01d9cf8-2583-42df-b76c-318b10fddeab
+		summarizeBy: sum
+		sourceColumn: units_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'public vw_genre_revenue' = m
+		mode: import
+		source =
+				let
+				    Fonte = PostgreSQL.Database("localhost", "game_market_intelligence"),
+				    public_vw_genre_revenue = Fonte{[Schema="public",Item="vw_genre_revenue"]}[Data]
+				in
+				    public_vw_genre_revenue
+
+	annotation PBI_ResultType = Table
+

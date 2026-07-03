@@ -1,0 +1,58 @@
+table 'public platforms'
+	lineageTag: 8e929ed7-feaf-40ef-90a9-3b380de87d06
+
+	column platform_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d4eed34-509f-4c00-baf6-015de2744ddc
+		summarizeBy: none
+		sourceColumn: platform_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 17449d07-d07d-4f92-bd98-f3d0daf0dcd6
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column company
+		dataType: string
+		lineageTag: f288dfc2-78e2-4cb2-bd37-8e802b540122
+		summarizeBy: none
+		sourceColumn: company
+
+		annotation SummarizationSetBy = Automatic
+
+	column launch_year
+		dataType: int64
+		formatString: 0
+		lineageTag: f9f0caa0-4fad-4898-a035-49711b520524
+		summarizeBy: none
+		sourceColumn: launch_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_cut_pct
+		dataType: double
+		lineageTag: 7e3f9e84-bf00-4348-9df2-2fdba6719c24
+		summarizeBy: none
+		sourceColumn: revenue_cut_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'public platforms' = m
+		mode: import
+		source =
+				let
+				    Fonte = PostgreSQL.Database("localhost", "game_market_intelligence"),
+				    public_platforms = Fonte{[Schema="public",Item="platforms"]}[Data]
+				in
+				    public_platforms
+
+	annotation PBI_ResultType = Table
+

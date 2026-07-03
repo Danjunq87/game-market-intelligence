@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "1f50aef62ee933cdd281",
+  "displayName": "Games",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "849457c7711df2523c59",
+    "type": "Default",
+    "parameters": []
+  }
+}

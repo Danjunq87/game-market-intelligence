@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "5c4f563e6f8e35ae2022",
+  "displayName": "Countries",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}

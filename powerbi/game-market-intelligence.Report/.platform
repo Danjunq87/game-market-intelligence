@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "game-market-intelligence"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "92b4657e-1007-47f4-9f00-e33b58bf2b47"
+  }
+}

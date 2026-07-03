@@ -1,0 +1,56 @@
+relationship 3d3eb0f4-1737-4687-b494-daded3854f9b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'public games'.release_date
+	toColumn: LocalDateTable_9e0f0bf8-e480-4a42-b968-23cfab738516.Date
+
+relationship d8eb99be-c1a4-4ca8-b13a-a29cc4307b77
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'public games'.created_at
+	toColumn: LocalDateTable_d0e1e6ca-7c22-454c-a3ed-06ff41512b8f.Date
+
+relationship c3caf181-56e4-4fec-a8f9-2f6afa66c26f
+	fromColumn: 'public game_genres'.game_id
+	toColumn: 'public games'.game_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship bae7e107-ca31-427d-b1db-957ebf58e8b4
+	fromColumn: 'public game_genres'.genre_id
+	toColumn: 'public genres'.genre_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 085718b9-0344-47ed-a076-afc6cb3c0107
+	fromColumn: 'public games'.developer_id
+	toColumn: 'public developers'.developer_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship faf1d9f4-2ad0-473a-8856-7038321e0b65
+	fromColumn: 'public games'.publisher_id
+	toColumn: 'public publishers'.publisher_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship ae54daea-aca7-43d8-825c-228ae5e23771
+	fromColumn: 'public sales'.country_id
+	toColumn: 'public countries'.country_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 9368b409-009f-40f9-86bb-1339b0ab341c
+	fromColumn: 'public sales'.game_id
+	toColumn: 'public games'.game_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 5de1ecd3-9530-40c3-991f-b8b506743be9
+	fromColumn: 'public sales'.platform_id
+	toColumn: 'public platforms'.platform_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 8a1d79ae-67a9-5cea-a60f-e510fcb9fabd
+	fromColumn: 'public sales'.sale_date
+	toColumn: DimDate.Date
+

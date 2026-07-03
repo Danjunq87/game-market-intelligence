@@ -1,0 +1,30 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["public developers","public countries","public game_genres","public games","public genres","public platforms","public publishers","public sales","public vw_genre_revenue"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'public developers'
+ref table 'public countries'
+ref table 'public game_genres'
+ref table 'public games'
+ref table DateTableTemplate_2fc7e9c9-9170-410b-8dac-7b6858de1269
+ref table LocalDateTable_9e0f0bf8-e480-4a42-b968-23cfab738516
+ref table LocalDateTable_d0e1e6ca-7c22-454c-a3ed-06ff41512b8f
+ref table 'public genres'
+ref table 'public platforms'
+ref table 'public publishers'
+ref table 'public sales'
+ref table 'public vw_genre_revenue'
+ref table DimDate
+
+ref cultureInfo pt-BR
+

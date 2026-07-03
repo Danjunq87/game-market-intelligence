@@ -1,0 +1,48 @@
+table 'public publishers'
+	lineageTag: d0a2801c-e636-49d3-b84b-be2bfcee3b67
+
+	column publisher_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 529c68d4-66b9-4707-93a8-c12e4ddfd15a
+		summarizeBy: none
+		sourceColumn: publisher_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 547b1f6d-59bc-410e-a7fa-f6c6c7adecc7
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 3dc17918-1a72-46d2-9fe7-905738d06ac9
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column founded_year
+		dataType: int64
+		formatString: 0
+		lineageTag: ee95b69f-6e47-40a0-9ae7-4e0a3038d5a5
+		summarizeBy: none
+		sourceColumn: founded_year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'public publishers' = m
+		mode: import
+		source =
+				let
+				    Fonte = PostgreSQL.Database("localhost", "game_market_intelligence"),
+				    public_publishers = Fonte{[Schema="public",Item="publishers"]}[Data]
+				in
+				    public_publishers
+
+	annotation PBI_ResultType = Table
+

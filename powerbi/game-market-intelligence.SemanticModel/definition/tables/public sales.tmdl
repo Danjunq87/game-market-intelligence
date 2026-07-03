@@ -1,0 +1,107 @@
+table 'public sales'
+	lineageTag: 0d40e6c5-c84a-4224-ac33-ee8f93fda773
+
+	measure 'Total Revenue' = SUM('public sales'[revenue_usd])
+		lineageTag: 86acb6b7-ffd7-4b17-990d-2aa88429d55c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Units' = SUM('public sales'[units_sold])
+		formatString: 0
+		lineageTag: f7951929-88dc-446e-83d7-1a2f389436e6
+
+	measure 'Avg Ticket' = DIVIDE([Total Revenue], [Total Units])
+		lineageTag: ce2928be-00b2-4889-849f-1179f4fc9d9c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Distinct Games Sold' = DISTINCTCOUNT('public sales'[game_id])
+		formatString: 0
+		lineageTag: 2af5394b-cd13-4060-a834-2faa1486bef5
+
+	measure 'Revenue Prev Month' = CALCULATE([Total Revenue], DATEADD('DimDate'[Date], -1, MONTH))
+		lineageTag: e93470c0-d853-4044-90b1-c8535b0e8b6c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Revenue MoM %' = DIVIDE([Total Revenue] - [Revenue Prev Month], [Revenue Prev Month])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 453bb677-fa6c-4a37-ae7a-d9614829475e
+
+	column sale_id
+		dataType: int64
+		formatString: 0
+		lineageTag: cad87c2e-2142-4f95-91a0-8365a19fff6e
+		summarizeBy: sum
+		sourceColumn: sale_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column game_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 571fc418-d87f-4f3d-ace5-2ea0b04ae9a4
+		summarizeBy: none
+		sourceColumn: game_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column platform_id
+		dataType: int64
+		formatString: 0
+		lineageTag: aa5b5963-2885-4f0a-bc20-85f51f514281
+		summarizeBy: none
+		sourceColumn: platform_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b57d9a1-022b-4ffb-9e9a-aac81882f3e1
+		summarizeBy: none
+		sourceColumn: country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sale_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 408a3bc6-d71b-4ef8-8c5b-c1fd168742e1
+		summarizeBy: none
+		sourceColumn: sale_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column units_sold
+		dataType: int64
+		formatString: 0
+		lineageTag: c0a56ba6-e0b7-4364-9e73-82fc0e7ed6ec
+		summarizeBy: sum
+		sourceColumn: units_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_usd
+		dataType: double
+		lineageTag: 8493434a-8404-4ea1-afa8-ef8e00ce2b53
+		summarizeBy: sum
+		sourceColumn: revenue_usd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'public sales' = m
+		mode: import
+		source =
+				let
+				    Fonte = PostgreSQL.Database("localhost", "game_market_intelligence"),
+				    public_sales = Fonte{[Schema="public",Item="sales"]}[Data]
+				in
+				    public_sales
+
+	annotation PBI_ResultType = Table
+

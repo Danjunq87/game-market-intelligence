@@ -1,0 +1,39 @@
+table 'public developers'
+	lineageTag: 63a4b3f8-e025-4ab4-bb10-fb5ef180d9a9
+
+	column developer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ca1fa38c-e9f9-4e6a-8bbd-551f3b081d75
+		summarizeBy: none
+		sourceColumn: developer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: a61f5753-0ec6-482a-8f20-34cbd207dee2
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 066ae1af-cc08-4cb9-a1d7-bdfd276ed5c6
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'public developers' = m
+		mode: import
+		source =
+				let
+				    Fonte = PostgreSQL.Database("localhost", "game_market_intelligence"),
+				    public_developers = Fonte{[Schema="public",Item="developers"]}[Data]
+				in
+				    public_developers
+
+	annotation PBI_ResultType = Table
+

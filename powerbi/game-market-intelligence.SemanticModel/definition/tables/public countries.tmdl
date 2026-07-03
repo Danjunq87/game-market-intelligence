@@ -1,0 +1,47 @@
+table 'public countries'
+	lineageTag: 928159f9-6877-46aa-b732-871613d54a84
+
+	column country_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 767159b7-2a3c-4466-b794-1fe18f115604
+		summarizeBy: none
+		sourceColumn: country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 21cd9cb1-5913-419a-8a17-2c89a1a7abe0
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_code
+		dataType: string
+		lineageTag: 1117829e-d3a5-4944-a049-a59be3a4b4bc
+		summarizeBy: none
+		sourceColumn: iso_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 1ed0a143-7737-4ffa-88c2-d009bfb4df7a
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'public countries' = m
+		mode: import
+		source =
+				let
+				    Fonte = PostgreSQL.Database("localhost", "game_market_intelligence"),
+				    public_countries = Fonte{[Schema="public",Item="countries"]}[Data]
+				in
+				    public_countries
+
+	annotation PBI_ResultType = Table
+
