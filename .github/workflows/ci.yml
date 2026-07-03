@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  python-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Lint python scripts
+        run: ruff check python/
+
+  sql-smoke-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: game_market_intelligence
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      PGHOST: localhost
+      PGPORT: 5432
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      PGDATABASE: game_market_intelligence
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply schema
+        run: psql -v ON_ERROR_STOP=1 -f sql/01_schema.sql
+
+      - name: Seed dimension tables
+        run: psql -v ON_ERROR_STOP=1 -f sql/02_seed_dimensions.sql
+
+      - name: Create views and run business queries
+        run: psql -v ON_ERROR_STOP=1 -f sql/03_business_queries.sql

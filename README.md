@@ -1,5 +1,7 @@
 # 🎮 Game Market Intelligence | PostgreSQL + Python + Power BI
 
+[![CI](https://github.com/Danjunq87/game-market-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/Danjunq87/game-market-intelligence/actions/workflows/ci.yml)
+
 An end-to-end Data Analytics project that simulates digital game sales across multiple gaming platforms.
 
 The project combines **real game metadata collected from the Steam Store API** with **simulated sales data** to build a complete Business Intelligence solution using **Python, PostgreSQL, SQL and Power BI**.

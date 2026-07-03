@@ -21,7 +21,7 @@ Requisitos:
 """
 import os
 import random
-from datetime import date, timedelta
+from datetime import date
 
 import numpy as np
 import psycopg2
