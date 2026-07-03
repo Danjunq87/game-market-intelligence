@@ -9,6 +9,7 @@ relationship d8eb99be-c1a4-4ca8-b13a-a29cc4307b77
 	toColumn: LocalDateTable_d0e1e6ca-7c22-454c-a3ed-06ff41512b8f.Date
 
 relationship c3caf181-56e4-4fec-a8f9-2f6afa66c26f
+	crossFilteringBehavior: bothDirections
 	fromColumn: 'public game_genres'.game_id
 	toColumn: 'public games'.game_id
 
