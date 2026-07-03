@@ -107,12 +107,17 @@ game-market-intelligence/
 
 ├── python/
 │   ├── 01_fetch_steam_games.py
-│   └── 02_generate_sales.py
+│   ├── 02_generate_sales.py
+│   └── 03_export_sample_data.py
 │
 ├── sql/
 │   ├── 01_schema.sql
 │   ├── 02_seed_dimensions.sql
 │   └── 03_business_queries.sql
+│
+├── data/
+│   ├── sample_data.sql
+│   └── sample.db
 │
 ├── powerbi/
 │   ├── game-market-intelligence.pbip
@@ -137,6 +142,15 @@ game-market-intelligence/
 - PostgreSQL
 - Business Intelligence
 - Power BI Dashboard Development
+
+---
+
+# Quick Start (No Setup)
+
+Want to browse the dataset without installing PostgreSQL or hitting the Steam API?
+
+- **SQLite**: open `data/sample.db` with [DB Browser for SQLite](https://sqlitebrowser.org/) or any SQLite client — it's a ready-to-query copy of the full dataset (39 games, 18k+ sales rows).
+- **PostgreSQL**: run `sql/01_schema.sql` followed by `data/sample_data.sql` to load the same data into Postgres, skipping steps 2–4 of the full setup below.
 
 ---
 
@@ -167,6 +181,12 @@ python python/02_generate_sales.py
 ```
 
 5. Explore the business queries in `sql/03_business_queries.sql`, or open `powerbi/game-market-intelligence.pbip` in Power BI Desktop to view the report.
+
+6. (Optional) Regenerate the sample data artifacts in `data/` from your own database:
+
+```bash
+python python/03_export_sample_data.py
+```
 
 ---
 
